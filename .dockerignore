@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.git/
+railway.toml
+render.yaml
+runtime.txt
+README.md
+*.log
