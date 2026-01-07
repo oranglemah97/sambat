@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-Auto Patcher untuk Bot SheerID
+Auto Patcher untuk K12 Bot SheerID
 Jalankan: python auto_patcher.py
 """
 
 def patch_bot_file():
-    print("🔧 Auto Patcher Bot SheerID")
+    print("🔧 Auto Patcher K12 Bot SheerID")
     print("="*70)
 
     try:
         # Baca file asli
-        with open('paste.txt', 'r', encoding='utf-8') as f:
+        with open('k12_bot.py', 'r', encoding='utf-8') as f:
             code = f.read()
 
-        print("✅ File paste.txt berhasil dibaca")
+        print("✅ File k12_bot.py berhasil dibaca")
         print(f"📏 Ukuran: {len(code)} karakter")
 
         # PERBAIKAN #1: Simpan link lengkap
@@ -48,7 +48,7 @@ def patch_bot_file():
             code = code.replace(old_1, new_1, 1)
             print("✅ Perbaikan #1: Simpan link lengkap - DONE")
         else:
-            print("⚠️ Perbaikan #1: Pattern tidak ditemukan")
+            print("⚠️ Perbaikan #1: Pattern tidak ditemukan, coba manual")
 
         # PERBAIKAN #2: Timeout notification
         old_2 = """    if check_count >= 30:
@@ -120,7 +120,7 @@ def patch_bot_file():
             code = code.replace(old_2, new_2, 1)
             print("✅ Perbaikan #2: Timeout notification - DONE")
         else:
-            print("⚠️ Perbaikan #2: Pattern tidak ditemukan")
+            print("⚠️ Perbaikan #2: Pattern tidak ditemukan, coba manual")
 
         # PERBAIKAN #3: NOT APPROVED
         old_3 = """                        elif verification_status == "not_approved":
@@ -195,7 +195,7 @@ def patch_bot_file():
             code = code.replace(old_3, new_3, 1)
             print("✅ Perbaikan #3: NOT APPROVED notification - DONE")
         else:
-            print("⚠️ Perbaikan #3: Pattern tidak ditemukan")
+            print("⚠️ Perbaikan #3: Pattern tidak ditemukan, coba manual")
 
         # PERBAIKAN #4: UNKNOWN
         old_4 = """                        else:
@@ -244,25 +244,28 @@ def patch_bot_file():
             code = code.replace(old_4, new_4, 1)
             print("✅ Perbaikan #4: UNKNOWN notification - DONE")
         else:
-            print("⚠️ Perbaikan #4: Pattern tidak ditemukan")
+            print("⚠️ Perbaikan #4: Pattern tidak ditemukan, coba manual")
 
         # Simpan file yang sudah diperbaiki
-        with open('paste_FIXED.txt', 'w', encoding='utf-8') as f:
+        with open('k12_bot_FIXED.py', 'w', encoding='utf-8') as f:
             f.write(code)
 
         print("="*70)
         print("✅ SELESAI! File berhasil diperbaiki!")
-        print("📁 File baru: paste_FIXED.txt")
+        print("📁 File baru: k12_bot_FIXED.py")
+        print(f"📏 Ukuran: {len(code)} karakter")
         print("="*70)
         print("\n📋 NEXT STEPS:")
-        print("1. Rename paste_FIXED.txt jadi paste.txt (atau nama bot kamu)")
-        print("2. Upload ke server/Railway")
-        print("3. Deploy & test dengan /start")
+        print("1. Backup file lama: mv k12_bot.py k12_bot_OLD.py")
+        print("2. Rename file baru: mv k12_bot_FIXED.py k12_bot.py")
+        print("3. Deploy ke Railway")
+        print("4. Test dengan /start")
         print("\n✨ Bot sekarang akan kirim link lengkap di semua error!")
 
     except FileNotFoundError:
-        print("❌ File paste.txt tidak ditemukan!")
-        print("💡 Pastikan file paste.txt ada di folder yang sama dengan script ini")
+        print("❌ File k12_bot.py tidak ditemukan!")
+        print("💡 Pastikan file k12_bot.py ada di folder yang sama dengan script ini")
+        print("\n📁 File yang dicari: k12_bot.py")
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
